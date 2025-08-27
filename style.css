@@ -1,0 +1,91 @@
+@charset "UTF8";
+
+body {
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: #6e6e6e;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    width: 80%;
+    height: 77%;
+}
+
+h2{
+    margin: 0px;
+}
+
+
+#btn_container{
+    display: flex;
+    flex-direction: column;  
+    justify-content: space-between; 
+    height: 80px;
+}
+
+#barras_container > div{
+    margin: 20px 0px;
+    white-space: nowrap;
+}
+
+
+#barras_container{
+    width: 70%;
+}
+
+#barra_tempo_treino {
+    background-image: linear-gradient(45deg, red, #e77b7b, red, #e77b7b, red, #e77b7b);
+    width: 95%;
+    height: 20px;
+    border-radius: 10px;
+    border: 2px solid black;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: 0%, 100%;
+}
+
+#barra_tempo_treino_total {
+    background-image: linear-gradient(45deg, #00eeff, #c4effc, #00eeff, #c4effc, #00eeff, #c4effc);
+    width: 95%;
+    height: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: 0%, 100%;
+}
+
+#barra_tempo_treino_n{
+    color: white;
+    text-shadow: 1px 1px 0px black;
+    font-size: 35px;    
+}
+#barra_tempo_treino_n_total{
+    color: white;
+    text-shadow: 1px 1px 0px black;
+    font-size: 35px;
+}
+
+#historico {
+    width: 100%;
+    height: 100%;
+    background-color: #646464;
+}
+
+#container_historico {
+    display: flex;
+    align-items: center;
+    width: 40%;
+    background-color: #3f3f3f;
+}
