@@ -11,34 +11,31 @@ let hr_span = document.querySelector('#hora');
 let min_span = document.querySelector('#minutos');
 let seg_span = document.querySelector('#segundos');
 
-let hr = 0
-let min = 0
-let seg = 0
+let hr = 0, min = 0, seg = 0;
+
 
 let tempo = 0
 function iniciar_timer() {
     intervalo = setInterval(() => {
-        if (tempo === 100) {
+        tempo++
+        let tempo_porcentagem = parseInt((tempo / 3600) * 100);
+        if (tempo === 3600) {
             clearInterval(intervalo);
             intervalo = null;
-            window.alert('Escolha a intensidade e salve o progresso!')
-        } else {
-            tempo++
+            setTimeout(() => {
+                window.alert('Escolha a intensidade e salve o progresso!');
+            }, 1000);
         }
-        barra1.style.backgroundSize = `${tempo}%, 100%`;
-        n_barra1.textContent = tempo + "%";
-        if (seg <= 59) {
-            if (seg < 9) {
-                seg++;
-                seg_span.textContent = `0${seg}`;
-            } else {
-                seg++;
-                seg_span.textContent = seg;
-            }
-        } else if (min <= 59) {
+        barra1.style.backgroundSize = `${tempo_porcentagem}%, 100%`;
+        n_barra1.textContent = tempo_porcentagem + "%";
+        if (seg <= 58) {
+            seg++;
+            seg_span.textContent = seg < 9 ? `0${seg}` : seg;
+        } else if (min <= 58) {
             if (min < 9) {
                 min++;
                 min_span.textContent = `0${min}`;
+                seg_span.textContent = `00`;
             } else {
                 min++;
                 min_span.textContent = min;
@@ -53,7 +50,7 @@ function iniciar_timer() {
             min_span.textContent = "00";
         }
 
-    }, 100);
+    }, 1000);
 }
 
 function parar_timer() {
