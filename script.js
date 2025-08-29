@@ -12,13 +12,12 @@ let min_span = document.querySelector('#minutos');
 let seg_span = document.querySelector('#segundos');
 
 let hr = 0, min = 0, seg = 0;
-
-
+let data_inicio = Date.now();
 let tempo = 0
 function iniciar_timer() {
     intervalo = setInterval(() => {
-        tempo++
-        let tempo_porcentagem = parseInt((tempo / 3600) * 100);
+        tempo = Math.floor((Date.now() - data_inicio) / 1000);
+        let tempo_porcentagem = Math.floor((tempo / 3600) * 100);
         if (tempo === 3600) {
             clearInterval(intervalo);
             intervalo = null;
@@ -44,7 +43,7 @@ function iniciar_timer() {
                 hr_span.textContent = hr;
             }
         }
-    }, 1);
+    }, 1000);
 }
 
 function parar_timer() {
@@ -54,7 +53,7 @@ function parar_timer() {
 let soma_progresso = 0
 function salvar() {
     hr = 0, min = 0, seg = 0;
-    let tempo_porcentagem_progresso = parseInt((tempo / 18000) * 100);
+    let tempo_porcentagem_progresso = Math.floor((tempo / 18000) * 100);
     soma_progresso += tempo_porcentagem_progresso
     // Atualiza visual da barra total
     barra2.style.backgroundSize = `${soma_progresso + intense}% 100%`;
@@ -67,5 +66,5 @@ function salvar() {
     tempo = 0;
     barra1.style.backgroundSize = `0% 100%`;
     n_barra1.textContent = "0%";
-    console.log("Progresso acumulado:", controle_barra2);
+    console.log("Progresso acumulado:", soma_progresso)
 }
