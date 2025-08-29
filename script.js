@@ -2,7 +2,9 @@ let barra1 = document.querySelector('#barra_tempo_treino');
 let barra2 = document.querySelector('#barra_tempo_treino_total');
 let n_barra1 = document.querySelector('#barra_tempo_treino_n');
 let n_barra2 = document.querySelector('#barra_tempo_treino_n_total');
+let historico = document.querySelector('#historico');
 let start = document.querySelector('#iniciar');
+let parar = document.querySelector('#parar');
 let intervalo = null
 
 
@@ -11,11 +13,11 @@ let min_span = document.querySelector('#minutos');
 let seg_span = document.querySelector('#segundos');
 
 let hr = 0, min = 0, seg = 0;
-let data_inicio = Date.now();
 let tempo = 0
 tempo_porcentagem = 0
 function iniciar_timer() {
-    data_inicio = Date.now();
+    if (intervalo !== null) return;
+    let data_inicio = Date.now();
     console.log([hr, min, seg, data_inicio, tempo_porcentagem, soma_progresso].join(' | '));
     intervalo = setInterval(() => {
         tempo = Math.floor((Date.now() - data_inicio) / 1000);
@@ -48,30 +50,98 @@ function iniciar_timer() {
     }, 1000);
 }
 
+let parar_timer_controle = true
 function parar_timer() {
+    parar_timer_controle = parar_timer_controle === true ? false : true;
     clearInterval(intervalo);
+    intervalo = null;
 }
-let intense_progresso = 0
-let soma_progresso = 0
-function salvar() {
-    let intensidade = document.querySelector('#intensidade_id');
-    let intense = Number(intensidade.value);
-    intense_progresso += Number(intensidade.value);
-    hr = 0, min = 0, seg = 0;
-    let tempo_porcentagem_progresso = Math.floor((tempo / 18000) * 100);
-    soma_progresso += tempo_porcentagem_progresso
-    let soma_progresso_intense = soma_progresso + intense_progresso
-    // Atualiza visual da barra total
-    barra2.style.backgroundSize = `${soma_progresso_intense}% 100%`;
-    n_barra2.textContent = `${soma_progresso_intense}%`;
-    hr_span.textContent = "00"
-    min_span.textContent = "00"
-    seg_span.textContent = "00"
-    tempo_porcentagem = 0
+let intense_progresso = 0;
+let soma_progresso = 0;
 
-    // Reseta barra1
-    tempo = 0;
-    barra1.style.backgroundSize = `0% 100%`;
-    n_barra1.textContent = "0%";
-    console.log("Progresso acumulado:", soma_progresso)
+function salvar() {
+    if (parar_timer_controle === false || tempo_porcentagem === 100) {
+        intervalo = null;
+        // Captura data e hora atual
+        let data_sistema = new Date();
+        let dia_s = data_sistema.getDate();
+        let mes_s = data_sistema.getMonth() + 1;
+        mes_s = mes_s < 10 ? `0${mes_s}` : mes_s;
+        let ano_s = data_sistema.getFullYear();
+        let hora_s = data_sistema.getHours();
+        let minuto_s = data_sistema.getMinutes();
+        let segundo_s = data_sistema.getSeconds();
+        // Data formatada
+        segundo_s = segundo_s < 10 ? `0${segundo_s}` : segundo_s;
+        hora_s = hora_s < 10 ? `0${hora_s}` : hora_s;
+        minuto_s = minuto_s < 10 ? `0${minuto_s}` : minuto_s;
+
+
+        // Captura intensidade e texto correspondente
+        let intensidade = document.querySelector('#intensidade_id');
+        let intense = Number(intensidade.value);
+        let texto_intesidade = ['Leve', 'Moderado', 'Intenso'];
+
+        // Captura tempo do timer
+        let tempo_timer_final = `Tempo: ${hr}:${min < 10 ? `0${min}` : min}:${seg < 10 ? `0${seg}` : seg}`
+
+        // Adiciona entrada ao histórico (no topo)
+        historico.innerHTML = `<p>${dia_s}/${mes_s}/${ano_s} | ${hora_s}:${minuto_s}:${segundo_s} | Intensidade: ${texto_intesidade[intense - 1]} | ${tempo_timer_final}</p>` + historico.innerHTML;
+
+        // Acumula progresso com base na intensidade
+        intense_progresso += intense;
+
+        // Reseta contadores de tempo
+        hr = 0, min = 0, seg = 0;
+
+        // Calcula porcentagem de progresso com base no tempo 5Hrs
+        let tempo_porcentagem_progresso = Math.floor((tempo / 18000) * 100);
+        soma_progresso += tempo_porcentagem_progresso;
+        let soma_progresso_intense = soma_progresso + intense_progresso;
+
+        // Atualiza barra de progresso total
+        barra2.style.backgroundSize = `${soma_progresso_intense}% 100%`;
+        n_barra2.textContent = `${soma_progresso_intense}%`;
+
+        // Limpa visual do relógio
+        hr_span.textContent = "00";
+        min_span.textContent = "00";
+        seg_span.textContent = "00";
+        tempo_porcentagem = 0;
+
+        // Reseta barra de treino
+        tempo = 0;
+        barra1.style.backgroundSize = `0% 100%`;
+        n_barra1.textContent = "0%";
+
+        parar_timer_controle = true
+
+        // Log de progresso
+        console.log("Progresso acumulado:", soma_progresso);
+    } else if(tempo > 0){
+        let piscar_parar = null
+        let piscar_control = 0
+        piscar_parar = setInterval(() => {
+            parar.classList.toggle('piscar');
+            parar.style.scale = 1.1
+            piscar_control++
+            if (piscar_control === 6) {
+                clearInterval(piscar_parar);
+                parar.style.scale = 1
+            }
+        }, 100);
+    }else{
+        let piscar_start = null
+        let piscar_control = 0
+        piscar_start = setInterval(() => {
+            start.classList.toggle('piscar');
+            start.style.scale = 1.1
+            piscar_control++
+            if (piscar_control === 6) {
+                clearInterval(piscar_start);
+                parar.style.scale = 1
+            }
+        }, 100);
+    }
 }
+
