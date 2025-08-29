@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Corporal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header><h1>RESET-CORPORAL</h1></header>
+    <main> 
+        <section id="btn_container">
+            <div id="btn_container_filho1">
+                <div>TIMER <span id="hora">0</span>:<span id="minutos">00</span>:<span id="segundos">00</span></div>
+                <button id="iniciar" onclick="iniciar_timer()">INICIAR</button>
+                <button id="Parar" onclick="parar_timer()">PARAR</button>
+            </div>
+            <div>
+                <button id="Salvar" onclick="salvar()">SALVAR</button>
+                 <label for="intensidade_id">Intensidade
+                        <select name="intense" id="intensidade_id">
+                            <option value="1">LEVE</option>
+                            <option value="2">MODERADO</option>
+                            <option value="3">INTENSO</option>
+                        </select>
+                    </label>
+            </div>
+        </section>
+        <section id="barras_container">
+            <div>
+                <h2>Treino</h2>
+                <div id="barra_tempo_treino"></div>
+                <span id="barra_tempo_treino_n">0%</span>
+            </div>
+            <div>
+                <h2>Progresso</h2>
+                <div id="barra_tempo_treino_total"></div>
+                <span id="barra_tempo_treino_n_total">0%</span>
+            </div>
+        </section>
+        <section id="container_historico">
+            <div id="historico">
+                <p>exeplo</p>
+                <p>exeplo</p>
+                <p>exeplo</p>
+                <p>exeplo</p>
+                <p>exeplo</p>
+            </div>
+        </section>
+    </main>
+    <footer>Ernesto Rampanelli Neto. Todos os direitos reservados 2025</footer>
+    <script src="script.js"></script>
+</body>
+</html>
