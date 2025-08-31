@@ -56,6 +56,10 @@ function parar_timer() {
     clearInterval(intervalo);
     intervalo = null;
 }
+
+let soma_progresso_intense = 0
+let intensidade = document.querySelector('#intensidade_id');
+let intense = Number(intensidade.value);
 let intense_progresso = 0;
 let soma_progresso = 0;
 
@@ -78,8 +82,8 @@ function salvar() {
 
 
         // Captura intensidade e texto correspondente
-        let intensidade = document.querySelector('#intensidade_id');
-        let intense = Number(intensidade.value);
+        intensidade = document.querySelector('#intensidade_id');
+        intense = Number(intensidade.value);
         let texto_intesidade = ['Leve', 'Moderado', 'Intenso'];
 
         // Captura tempo do timer
@@ -97,7 +101,7 @@ function salvar() {
         // Calcula porcentagem de progresso com base no tempo 5Hrs
         let tempo_porcentagem_progresso = Math.floor((tempo / 18000) * 100);
         soma_progresso += tempo_porcentagem_progresso;
-        let soma_progresso_intense = soma_progresso + intense_progresso;
+        soma_progresso_intense = soma_progresso + intense_progresso;
 
         // Atualiza barra de progresso total
         barra2.style.backgroundSize = `${soma_progresso_intense}% 100%`;
@@ -118,6 +122,7 @@ function salvar() {
 
         // Log de progresso
         console.log("Progresso acumulado:", soma_progresso);
+        salvar_storage();
     } else if(tempo > 0){
         let piscar_parar = null
         let piscar_control = 0
@@ -145,3 +150,26 @@ function salvar() {
     }
 }
 
+function salvar_storage(){
+    localStorage.setItem('Progresso_intensidade', intensidade);
+    localStorage.setItem('Progresso_soma', soma_progresso);
+    localStorage.setItem('P_intense', intense);
+    localStorage.setItem('Progresso_intense', intense_progresso);
+    localStorage.setItem('Progresso_total', soma_progresso_intense);
+    let historico_texto = document.querySelector('#historico');
+    localStorage.setItem('Progresso_historico', historico_texto.innerHTML);
+    
+}
+
+function buscar_storage(){
+    soma_progresso = Number(localStorage.getItem('Progresso_soma'));
+    intensidade = Number(localStorage.getItem('Progresso_intensidade'));
+    intense = Number(localStorage.getItem('P_intense'));
+    intense_progresso = Number(localStorage.getItem('Progresso_intense'));
+    soma_progresso_intense = Number(localStorage.getItem('Progresso_total'));
+    historico.innerHTML = localStorage.getItem('Progresso_historico');
+    barra2.style.backgroundSize = `${soma_progresso_intense}% 100%`;
+    n_barra2.textContent = `${soma_progresso_intense}%`;
+}
+
+window.onload = buscar_storage()
