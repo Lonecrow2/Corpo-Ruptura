@@ -69,13 +69,13 @@ function salvar() {
         let data_sistema = new Date();
         let dia_s = data_sistema.getDate();
         let mes_s = data_sistema.getMonth() + 1;
-        mes_s = mes_s < 10 ? `0${mes_s}` : mes_s;
-        dia_s = dia_s < 10 ? `0${dia_s}` : dia_s;
         let ano_s = data_sistema.getFullYear();
         let hora_s = data_sistema.getHours();
         let minuto_s = data_sistema.getMinutes();
         let segundo_s = data_sistema.getSeconds();
         // Data formatada
+        mes_s = mes_s < 10 ? `0${mes_s}` : mes_s;
+        dia_s = dia_s < 10 ? `0${dia_s}` : dia_s;
         segundo_s = segundo_s < 10 ? `0${segundo_s}` : segundo_s;
         hora_s = hora_s < 10 ? `0${hora_s}` : hora_s;
         minuto_s = minuto_s < 10 ? `0${minuto_s}` : minuto_s;
