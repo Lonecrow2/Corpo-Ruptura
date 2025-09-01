@@ -22,131 +22,146 @@ main {
     flex-direction: column;
     width: 90%;
     height: 77%;
-    border: 2px solid #ffffff;
     border-radius: 20px;
-    background-image: linear-gradient(45deg, #ffffff4f, #ffffffd4, #ffffff3f);
 }
 
-h1{
+h1 {
     font-family: Arial, Helvetica, sans-serif;
     font-style: italic;
     font-size: 70px;
-    color: #ffff00;
+    color: #ffd700;
     margin: 0px 0px;
 }
 
 h2 {
     font-family: arial;
     margin: 0px;
-    color: #ffff00;
+    color: #ffd700;
+    padding: 2px 0px;
     text-shadow: 1px 1px 3px black;
     font-size: 40px;
-    background-image: linear-gradient(to right, #ffff0000, #ffffffa6, #ffff0000);
     text-align: center;
 }
 
+p{
+    color: #d3d3d3;
+    margin: 6px;
+}
+
+footer {
+    margin: 50px 0px 0px 0px;
+}
 
 #btn_container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 150px;
-    border: 2px solid #ffffff;
     border-radius: 10px;
-    background-image: linear-gradient(90deg, #3b62a9, #0087ff, #3b62a9);
+    background-image: linear-gradient(90deg, #0055aa, #00aaff, #0055aa);
     padding: 5px;
     margin: 10px;
 }
 
-/* #iniciar{
-    
-}
-
-#parar{
-
-}
-
-#salvar{
-
-} */
-
-#timer{
+#timer {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 40px;
-    background-color: #2e2e2e;
-    color: #16bb00;
+    background-color: #1f1f1f;
+    color: #00ff66;
     border-radius: 10px;
     padding: 2px;
     text-align: center;
 }
 
-.botoes{
+.botoes {
     font-size: 20px;
-    background-color: #ffd900;
+    background-image: linear-gradient(to bottom, #ffffff, #e0e0e0);
     border: 2px solid black;
     border-radius: 5px;
     margin: 5px;
+    color: black;
+    box-shadow: 2px 2px 6px #0000004d;
+    transition: all 0.2s ease-in-out;
 }
+
+.botoes:hover {
+    background-image: linear-gradient(to bottom, #f5f5f5, #dcdcdc);
+    box-shadow: 3px 3px 8px #00000066;
+    transform: scale(1.03);
+}
+
 
 #barras_container>div {
-    margin: 0px 0px;
+    width: 100%;
+    box-shadow: inset 0px 0px 23px black;
+    background: #1851ab;
     white-space: nowrap;
+    padding: 10px 88px;
+    border-radius: 28px;
+    border: 4px solid yellow;
+    margin: 10px 0px;
 }
 
-
 #barras_container {
+    display: flex;
     width: 70%;
 }
 
 #barra_tempo_treino {
-    background-image: linear-gradient(45deg, red, #e77b7b, red, #e77b7b, red, #e77b7b);
+    background-image: linear-gradient(45deg, #ff3333, #ff9999, #ff3333);
     width: 100%;
-    height: 20px;
+    height: 23px;
     border-radius: 20px;
-    border: 2px solid yellow;
+    border: 4px solid #f2ff00;
     display: inline-block;
     background-repeat: no-repeat;
     background-size: 0%, 100%;
 }
 
 #barra_tempo_treino_total {
-    background-image: linear-gradient(45deg, #00eeff, #c4effc, #00eeff, #c4effc, #00eeff, #c4effc);
+    background-image: linear-gradient(45deg, #ff3333, #ff9999, #ff3333);
     width: 100%;
-    height: 20px;
-    border: 2px solid yellow;
+    height: 23px;
     border-radius: 20px;
+    border: 4px solid #f2ff00;
     display: inline-block;
     background-repeat: no-repeat;
     background-size: 0%, 100%;
 }
 
 #barra_tempo_treino_n {
-    color: yellow;
-    text-shadow: 1px 1px 0px black;
+    color: #ffcc00;
+    text-shadow: 0px 0px 5px black;
     font-size: 40px;
 }
 
 #barra_tempo_treino_n_total {
-    color: yellow;
-    text-shadow: 1px 1px 0px black;
+    color: #ffcc00;
+    text-shadow: 0px 0px 5px black;
     font-size: 40px;
+}
+
+#p1 {
+    width: 108px;
 }
 
 #historico {
     width: 100%;
     height: 100%;
+    margin: 22px 0px 0px 0px;
+    padding: 3px;
+    border: 4px solid yellow;
     overflow-y: scroll;
-    background-color: #646464;
+    background-color: #2e2e2e;
 }
 
 #container_historico {
     display: flex;
     align-items: center;
     width: 40%;
-    height: 50%;
-    background-color: #3f3f3f;
+    height: 33%;
 }
 
 .piscar {
-    box-shadow: 0px 0px 3px 3px red;
+    box-shadow: 0px 0px 3px 3px #ff3333;
 }
