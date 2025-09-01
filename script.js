@@ -7,7 +7,6 @@ let start = document.querySelector('#iniciar');
 let parar = document.querySelector('#parar');
 let intervalo = null
 
-
 let hr_span = document.querySelector('#hora');
 let min_span = document.querySelector('#minutos');
 let seg_span = document.querySelector('#segundos');
@@ -71,6 +70,7 @@ function salvar() {
         let dia_s = data_sistema.getDate();
         let mes_s = data_sistema.getMonth() + 1;
         mes_s = mes_s < 10 ? `0${mes_s}` : mes_s;
+        dia_s = dia_s < 10 ? `0${dia_s}` : dia_s;
         let ano_s = data_sistema.getFullYear();
         let hora_s = data_sistema.getHours();
         let minuto_s = data_sistema.getMinutes();
