@@ -1,15 +1,17 @@
 @charset "UTF8";
 
 body {
+    color: white;
     box-sizing: border-box;
     padding: 0px;
     margin: 0px;
     width: 100vw;
     height: 100vh;
-    background-color: #6e6e6e;
+    background-image: url(imagens/background.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
     flex-direction: column;
 }
 
@@ -18,12 +20,29 @@ main {
     align-items: center;
     justify-content: space-evenly;
     flex-direction: column;
-    width: 80%;
+    width: 90%;
     height: 77%;
+    border: 2px solid #ffffff;
+    border-radius: 20px;
+    background-image: linear-gradient(45deg, #ffffff4f, #ffffffd4, #ffffff3f);
+}
+
+h1{
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    font-size: 70px;
+    color: #ffff00;
+    margin: 0px 0px;
 }
 
 h2 {
+    font-family: arial;
     margin: 0px;
+    color: #ffff00;
+    text-shadow: 1px 1px 3px black;
+    font-size: 40px;
+    background-image: linear-gradient(to right, #ffff0000, #ffffffa6, #ffff0000);
+    text-align: center;
 }
 
 
@@ -31,11 +50,46 @@ h2 {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 80px;
+    height: 150px;
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+    background-image: linear-gradient(90deg, #3b62a9, #0087ff, #3b62a9);
+    padding: 5px;
+    margin: 10px;
+}
+
+/* #iniciar{
+    
+}
+
+#parar{
+
+}
+
+#salvar{
+
+} */
+
+#timer{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px;
+    background-color: #2e2e2e;
+    color: #16bb00;
+    border-radius: 10px;
+    padding: 2px;
+    text-align: center;
+}
+
+.botoes{
+    font-size: 20px;
+    background-color: #ffd900;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin: 5px;
 }
 
 #barras_container>div {
-    margin: 20px 0px;
+    margin: 0px 0px;
     white-space: nowrap;
 }
 
@@ -46,10 +100,10 @@ h2 {
 
 #barra_tempo_treino {
     background-image: linear-gradient(45deg, red, #e77b7b, red, #e77b7b, red, #e77b7b);
-    width: 95%;
+    width: 100%;
     height: 20px;
-    border-radius: 10px;
-    border: 2px solid black;
+    border-radius: 20px;
+    border: 2px solid yellow;
     display: inline-block;
     background-repeat: no-repeat;
     background-size: 0%, 100%;
@@ -57,25 +111,25 @@ h2 {
 
 #barra_tempo_treino_total {
     background-image: linear-gradient(45deg, #00eeff, #c4effc, #00eeff, #c4effc, #00eeff, #c4effc);
-    width: 95%;
+    width: 100%;
     height: 20px;
-    border: 2px solid black;
-    border-radius: 10px;
+    border: 2px solid yellow;
+    border-radius: 20px;
     display: inline-block;
     background-repeat: no-repeat;
     background-size: 0%, 100%;
 }
 
 #barra_tempo_treino_n {
-    color: white;
+    color: yellow;
     text-shadow: 1px 1px 0px black;
-    font-size: 35px;
+    font-size: 40px;
 }
 
 #barra_tempo_treino_n_total {
-    color: white;
+    color: yellow;
     text-shadow: 1px 1px 0px black;
-    font-size: 35px;
+    font-size: 40px;
 }
 
 #historico {
