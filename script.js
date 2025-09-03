@@ -5,6 +5,7 @@ let n_barra2 = document.querySelector('#barra_tempo_treino_n_total');
 let historico = document.querySelector('#historico');
 let start = document.querySelector('#iniciar');
 let parar = document.querySelector('#parar');
+let perso = document.querySelector('.personagem');
 let intervalo = null
 
 let hr_span = document.querySelector('#hora');
@@ -17,7 +18,6 @@ tempo_porcentagem = 0
 function iniciar_timer() {
     if (intervalo !== null) return;
     let data_inicio = Date.now();
-    console.log([hr, min, seg, data_inicio, tempo_porcentagem, soma_progresso].join(' | '));
     intervalo = setInterval(() => {
         tempo = Math.floor((Date.now() - data_inicio) / 1000);
         tempo_porcentagem = Math.floor((tempo / 3600) * 100);
@@ -61,6 +61,14 @@ let intensidade = document.querySelector('#intensidade_id');
 let intense = Number(intensidade.value);
 let intense_progresso = 0;
 let soma_progresso = 0;
+let nivel = 1;
+function colocar_personagem() {
+    if (soma_progresso_intense > 20) { nivel = 2; }
+    if (soma_progresso_intense > 40) { nivel = 3; }
+    if (soma_progresso_intense > 60) { nivel = 4; }
+    if (soma_progresso_intense > 80) { nivel = 5; }
+    perso.src = `imagens/P${nivel}.png`;
+}
 
 function salvar() {
     if (parar_timer_controle === false || tempo_porcentagem === 100) {
@@ -104,8 +112,8 @@ function salvar() {
         soma_progresso_intense = soma_progresso + intense_progresso;
 
         // Atualiza barra de progresso total
-        barra2.style.backgroundSize = `${soma_progresso_intense}% 100%`;
-        n_barra2.textContent = `${soma_progresso_intense}%`;
+        barra2.style.backgroundSize = soma_progresso_intense < 100 ? `${soma_progresso_intense}% 100%` : `100% 100%`
+        n_barra2.textContent = soma_progresso_intense < 100 ? `${soma_progresso_intense}%` : "100%"
 
         // Limpa visual do relógio
         hr_span.textContent = "00";
@@ -119,11 +127,11 @@ function salvar() {
         n_barra1.textContent = "0%";
 
         parar_timer_controle = true
-
+        colocar_personagem();
         // Log de progresso
         console.log("Progresso acumulado:", soma_progresso);
         salvar_storage();
-    } else if(tempo > 0){
+    } else if (tempo > 0) {
         let piscar_parar = null
         let piscar_control = 0
         piscar_parar = setInterval(() => {
@@ -135,7 +143,7 @@ function salvar() {
                 parar.style.scale = 1
             }
         }, 100);
-    }else{
+    } else {
         let piscar_start = null
         let piscar_control = 0
         piscar_start = setInterval(() => {
@@ -150,7 +158,7 @@ function salvar() {
     }
 }
 
-function salvar_storage(){
+function salvar_storage() {
     localStorage.setItem('Progresso_intensidade', intensidade);
     localStorage.setItem('Progresso_soma', soma_progresso);
     localStorage.setItem('P_intense', intense);
@@ -158,18 +166,23 @@ function salvar_storage(){
     localStorage.setItem('Progresso_total', soma_progresso_intense);
     let historico_texto = document.querySelector('#historico');
     localStorage.setItem('Progresso_historico', historico_texto.innerHTML);
-    
+    localStorage.setItem('nivel_personagem', nivel);
 }
 
-function buscar_storage(){
+function buscar_storage() {
     soma_progresso = Number(localStorage.getItem('Progresso_soma'));
     intensidade = Number(localStorage.getItem('Progresso_intensidade'));
     intense = Number(localStorage.getItem('P_intense'));
     intense_progresso = Number(localStorage.getItem('Progresso_intense'));
     soma_progresso_intense = Number(localStorage.getItem('Progresso_total'));
+    nivel = Number(localStorage.getItem('nivel_personagem'));
     historico.innerHTML = localStorage.getItem('Progresso_historico');
-    barra2.style.backgroundSize = `${soma_progresso_intense}% 100%`;
-    n_barra2.textContent = `${soma_progresso_intense}%`;
+
+    barra2.style.backgroundSize = soma_progresso_intense < 100 ? `${soma_progresso_intense}% 100%` : `100% 100%`
+    n_barra2.textContent = soma_progresso_intense < 100 ? `${soma_progresso_intense}%` : "100%"
 }
 
-window.onload = buscar_storage()
+window.onload = function () {
+    buscar_storage();
+    colocar_personagem();
+};
