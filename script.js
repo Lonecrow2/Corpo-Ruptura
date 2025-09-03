@@ -63,10 +63,10 @@ let intense_progresso = 0;
 let soma_progresso = 0;
 let nivel = 1;
 function colocar_personagem() {
-    if (soma_progresso_intense > 20) { nivel = 2; }
-    if (soma_progresso_intense > 40) { nivel = 3; }
-    if (soma_progresso_intense > 60) { nivel = 4; }
-    if (soma_progresso_intense > 80) { nivel = 5; }
+    if (soma_progresso_intense > 25) { nivel = 2; }
+    if (soma_progresso_intense > 50) { nivel = 3; }
+    if (soma_progresso_intense > 75) { nivel = 4; }
+    if (soma_progresso_intense > 99) { nivel = 5; }
     perso.src = `imagens/P${nivel}.png`;
 }
 
@@ -176,6 +176,10 @@ function buscar_storage() {
     intense_progresso = Number(localStorage.getItem('Progresso_intense'));
     soma_progresso_intense = Number(localStorage.getItem('Progresso_total'));
     nivel = Number(localStorage.getItem('nivel_personagem'));
+    if (!nivel || nivel < 1) {
+        nivel = 1;
+    }
+
     historico.innerHTML = localStorage.getItem('Progresso_historico');
 
     barra2.style.backgroundSize = soma_progresso_intense < 100 ? `${soma_progresso_intense}% 100%` : `100% 100%`
