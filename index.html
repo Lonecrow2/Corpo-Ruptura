@@ -11,7 +11,7 @@
     <main> 
         <section id="btn_container">
             <div id="btn_container_filho1">
-                <div id="timer"><span id="hora">0</span>:<span id="minutos">00</span>:<span id="segundos">00</span></div>
+                <div id="timer"><span id="hora">00</span>:<span id="minutos">00</span>:<span id="segundos">00</span></div>
                 <button class="botoes" id="iniciar" onclick="iniciar_timer()">INICIAR</button>
                 <button class="botoes" id="parar" onclick="parar_timer()">PARAR</button>
                 <button class="botoes" id="Salvar" onclick="salvar()">SALVAR</button>
@@ -40,6 +40,10 @@
                     </div>
                 </div>
                 <img src="imagens/P1.png" alt="personagem" id="p1" class="personagem">
+        </section>
+        <section id="container_pontos">
+            <p id="pontos">Você possui: <span id="valor_pontos">0</span> Pontos</p>
+            <p>Trocar ponto por refeição <button id="trocar_pontos">TROCAR</button></p>
         </section>
         <section id="container_historico">
             <div id="historico"></div>

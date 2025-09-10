@@ -15,45 +15,56 @@ let seg_span = document.querySelector('#segundos');
 let hr = 0, min = 0, seg = 0;
 let tempo = 0
 tempo_porcentagem = 0
+let iniciar_timer_controle = true
 function iniciar_timer() {
-    if (intervalo !== null) return;
-    let data_inicio = Date.now();
-    intervalo = setInterval(() => {
-        tempo = Math.floor((Date.now() - data_inicio) / 1000);
-        tempo_porcentagem = Math.floor((tempo / 3600) * 100);
-        if (tempo === 3600) {
-            clearInterval(intervalo);
-            intervalo = null;
-            setTimeout(() => {
-                window.alert('Escolha a intensidade e salve o progresso!');
-            }, 1000);
-        }
-        barra1.style.backgroundSize = `${tempo_porcentagem}%, 100%`;
-        n_barra1.textContent = tempo_porcentagem + "%";
-        if (seg < 59) {
-            seg++;
-            seg_span.textContent = seg < 10 ? `0${seg}` : seg;
-        } else {
-            seg = 0;
-            seg_span.textContent = "00";
-            if (min < 59) {
-                min++;
-                min_span.textContent = min < 10 ? `0${min}` : min;
-            } else {
-                min = 0;
-                min_span.textContent = "00";
-                hr++;
-                hr_span.textContent = hr;
+    if (tempo === 0) {
+        iniciar_timer_controle = iniciar_timer_controle === true ? false : true;
+        if (intervalo !== null) return;
+        let data_inicio = Date.now();
+        intervalo = setInterval(() => {
+            tempo = Math.floor((Date.now() - data_inicio) / 1000);
+            tempo_porcentagem = Math.floor((tempo / 3600) * 100);
+            if (tempo === 3600) {
+                clearInterval(intervalo);
+                intervalo = null;
+                setTimeout(() => {
+                    window.alert('Escolha a intensidade e salve o progresso!');
+                }, 1000);
             }
-        }
-    }, 1000);
+            barra1.style.backgroundSize = `${tempo_porcentagem}%, 100%`;
+            n_barra1.textContent = tempo_porcentagem + "%";
+            if (seg < 59) {
+                seg++;
+                seg_span.textContent = seg < 10 ? `0${seg}` : seg;
+            } else {
+                seg = 0;
+                seg_span.textContent = "00";
+                if (min < 59) {
+                    min++;
+                    min_span.textContent = min < 10 ? `0${min}` : min;
+                } else {
+                    min = 0;
+                    min_span.textContent = "00";
+                    hr++;
+                    hr_span.textContent = hr;
+                }
+            }
+        }, 1000);
+    }
 }
 
+let parar_controle = 0
 let parar_timer_controle = true
 function parar_timer() {
-    parar_timer_controle = parar_timer_controle === true ? false : true;
-    clearInterval(intervalo);
-    intervalo = null;
+    if (iniciar_timer_controle === false) {
+        if (parar_controle === 0) {
+            parar_controle++
+            parar_timer_controle = parar_timer_controle === true ? false : true;
+        }
+            clearInterval(intervalo);
+            intervalo = null;
+        }
+        return
 }
 
 let soma_progresso_intense = 0
@@ -127,6 +138,8 @@ function salvar() {
         n_barra1.textContent = "0%";
 
         parar_timer_controle = true
+        iniciar_timer_controle = true
+        parar_controle = 0
         colocar_personagem();
         // Log de progresso
         console.log("Progresso acumulado:", soma_progresso);
