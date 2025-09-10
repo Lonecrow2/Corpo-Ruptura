@@ -34,7 +34,7 @@ h1 {
 }
 
 h2 {
-    font-family: arial;
+    font-family: Arial, Helvetica, sans-serif;
     margin: 0px;
     color: #ffd700;
     padding: 2px 0px;
@@ -64,8 +64,10 @@ footer {
     display: flex;
     flex-direction: column;
     border-radius: 10px;
-    background-image: linear-gradient(90deg, #0055aa, #00aaff, #0055aa);
-    padding: 5px;
+    background-image: linear-gradient(90deg, #222831, #393e46, #222831);
+    padding: 8px;
+    border: 4px solid #444;
+    box-shadow: inset 0px 0px 23px #000000;
 }
 
 #btn_container_filho1 {
@@ -86,23 +88,27 @@ footer {
 
 
 #iniciar {
-    background-image: linear-gradient(to bottom, #00ff22, #7dff8f);
+    background-image: linear-gradient(to bottom, #014100, #00771a);
+    color: #3dff00;
+    border: 2px solid #06ff00;
 }
 
 #parar {
-    background-image: linear-gradient(to bottom, #ff0000, #ff7d7d);
+    background-image: linear-gradient(to bottom, #330000, #770000);
+    color: #ff0000;
+    border: 2px solid #ff0000;
 }
 
 #Salvar {
-    background-image: linear-gradient(to bottom, #eeff00, #f6ff7d);
+    background-image: linear-gradient(to bottom, #323300, #757700);
+    color: #edff00;
+    border: 2px solid #e6ff00;
 }
 
 .botoes {
     font-size: 20px;
-    border: 2px solid black;
     border-radius: 5px;
     margin: 5px;
-    color: black;
     box-shadow: 2px 2px 6px #0000004d;
     transition: all 0.2s ease-in-out;
 }
@@ -123,11 +129,11 @@ footer {
     display: flex;
     width: 728px;
     box-shadow: inset 0px 0px 23px black;
-    background: #1851ab;
+    background-image: linear-gradient(90deg, #222831, #393e46, #222831);
     white-space: nowrap;
     padding: 10px 10px;
     border-radius: 28px;
-    border: 4px solid yellow;
+    border: 2px solid #ffff00;
     margin: 10px 0px;
 }
 
@@ -192,7 +198,7 @@ footer {
     height: 166px;
 }
 
-#container_pontos > p {
+#container_pontos>p {
     color: #ffcc00;
     font-size: 19px;
     text-shadow: 0px 0px 5px #000000;

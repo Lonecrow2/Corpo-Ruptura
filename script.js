@@ -11,6 +11,8 @@ let intervalo = null
 let hr_span = document.querySelector('#hora');
 let min_span = document.querySelector('#minutos');
 let seg_span = document.querySelector('#segundos');
+let pontos_valor_elmt = document.querySelector('#valor_pontos');
+let pontos_valor = 0
 
 let hr = 0, min = 0, seg = 0;
 let tempo = 0
@@ -61,10 +63,10 @@ function parar_timer() {
             parar_controle++
             parar_timer_controle = parar_timer_controle === true ? false : true;
         }
-            clearInterval(intervalo);
-            intervalo = null;
-        }
-        return
+        clearInterval(intervalo);
+        intervalo = null;
+    }
+    return
 }
 
 let soma_progresso_intense = 0
@@ -169,7 +171,36 @@ function salvar() {
             }
         }, 100);
     }
+    if (soma_progresso_intense >= 100) {
+        pontos_valor++
+        pontos_valor_elmt.innerHTML = pontos_valor
+        window.alert('✅ Progresso concluído: 100%! Você acaba de conquistar 1 ponto de refeição consciente. Os dados de progresso serão reiniciados para que você continue evoluindo. Seu histórico foi preservado com sucesso. Aproveite sua conquista!');
+        reset_storage();
+    }
 }
+
+function reset_storage() {
+    // Zera os dados de progresso
+    soma_progresso_intense = 0;
+    soma_progresso = 0;
+    intense_progresso = 0;
+    intense = 0;
+    nivel = 1;
+
+    // Atualiza visual
+    barra2.style.backgroundSize = `0% 100%`;
+    n_barra2.textContent = "0%";
+    colocar_personagem();
+
+    // Salva os dados zerados no localStorage, mantendo o histórico
+    localStorage.setItem('pontuacao', pontos_valor);
+    localStorage.setItem('Progresso_total', soma_progresso_intense);
+    localStorage.setItem('Progresso_soma', soma_progresso);
+    localStorage.setItem('Progresso_intense', intense_progresso);
+    localStorage.setItem('P_intense', intense);
+    localStorage.setItem('nivel_personagem', nivel);
+}
+
 
 function salvar_storage() {
     localStorage.setItem('Progresso_intensidade', intensidade);
@@ -180,6 +211,7 @@ function salvar_storage() {
     let historico_texto = document.querySelector('#historico');
     localStorage.setItem('Progresso_historico', historico_texto.innerHTML);
     localStorage.setItem('nivel_personagem', nivel);
+    localStorage.setItem('pontuacao', pontos_valor);
 }
 
 function buscar_storage() {
@@ -188,6 +220,7 @@ function buscar_storage() {
     intense = Number(localStorage.getItem('P_intense'));
     intense_progresso = Number(localStorage.getItem('Progresso_intense'));
     soma_progresso_intense = Number(localStorage.getItem('Progresso_total'));
+    pontos_valor = Number(localStorage.getItem('pontuacao'));
     nivel = Number(localStorage.getItem('nivel_personagem'));
     if (!nivel || nivel < 1) {
         nivel = 1;
@@ -195,11 +228,24 @@ function buscar_storage() {
 
     historico.innerHTML = localStorage.getItem('Progresso_historico');
 
+    pontos_valor_elmt.innerHTML = pontos_valor
     barra2.style.backgroundSize = soma_progresso_intense < 100 ? `${soma_progresso_intense}% 100%` : `100% 100%`
     n_barra2.textContent = soma_progresso_intense < 100 ? `${soma_progresso_intense}%` : "100%"
 }
 
+let iniciar_aviso = 0
 window.onload = function () {
     buscar_storage();
     colocar_personagem();
+    
+    iniciar_aviso = localStorage.getItem('aviso_controle');
+    if (iniciar_aviso === "0" || iniciar_aviso === null){
+        setTimeout(() => {
+            window.alert("🎮 Pense neste site como um jogo mesclado com a vida real: cada treino de até 1 hora contribui para um total acumulado de 5 horas. Não é necessário completar 1 hora por dia — os tempos são somados automaticamente a cada sessão. Ao atingir 5 horas totais, você conquista 1 ponto fictício, que representa o direito de fazer uma refeição sem culpa. É uma forma simbólica de reconhecer seu esforço e transformar dedicação em conquista. Seu progresso é salvo automaticamente no navegador, de forma leve e divertida, pra te ajudar a manter o foco.");
+
+        
+            window.alert("💾 Atenção: seus dados são salvos localmente no navegador que você está usando. Se você acessar o site por outro navegador ou dispositivo, seu progresso não aparecerá — pois ele não é compartilhado entre plataformas. E se você limpar o cache, excluir o navegador ou redefinir os dados de navegação, todo o progresso será apagado. Use sempre o mesmo navegador para manter seu histórico e evolução intactos.");
+            localStorage.setItem('aviso_controle', "1");
+        }, 1000);
+    }else{return}
 };
