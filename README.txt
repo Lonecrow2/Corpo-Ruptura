@@ -1,10 +1,13 @@
-# WHAY-HE
+# 🧠 CorpoRuptura
 
-## Descrição
-**WHAY-HE é um jogo de escape room espacial onde cada clique revela um mistério e cada detalhe pode ser a chave para a liberdade. Você acorda sozinho em uma estação orbital esquecida, cercado por tecnologia decadente, sons distantes e fragmentos de memória que não fazem sentido — ainda.
-Resolva enigmas complexos e conecte pistas espalhadas por salas futuristas. Com uma jogabilidade point-and-click intuitiva e atmosfera imersiva, WHAY-HE desafia sua percepção, lógica e atenção aos mínimos detalhes.**.
+## Descrição  
+**CorpoRuptura é uma experiência interativa que mistura vida real com mecânicas de jogo. Aqui, cada treino é uma jogada estratégica: sessões de até 1 hora são somadas automaticamente, e ao atingir 5 horas acumuladas, você conquista 1 ponto simbólico — o direito de fazer uma refeição sem culpa.**
 
-**Estilo de jogo: (Scape-Room)point-and-click**  
+Esse sistema transforma esforço em recompensa, disciplina em liberdade, e rotina em narrativa. O progresso é salvo no navegador de forma leve, pra manter o foco sem pressão.
+
+**Estilo de interação: gamificação corporal com rastreamento simbólico de progresso.**
+
+---
 
 ## Tecnologias Utilizadas
 
@@ -12,20 +15,27 @@ Resolva enigmas complexos e conecte pistas espalhadas por salas futuristas. Com 
 - CSS3  
 - JavaScript  
 
+---
+
 ## Compatibilidade
-- Funciona em navegadores desktop e mobile(tela horizontal) 
-- Responsivo para diferentes resoluções.
+
+- Funciona em navegadores desktop e mobile 
+- Responsivo para diferentes resoluções  
+
+---
 
 ## Créditos
+
 - Autor: **Ernesto Rampanelli Neto**  
-- Imagens geradas por IA e editadas no [Photopea](https://www.photopea.com/)
-- Sons: Criados e editados por Ernesto Rampanelli Neto
+- Imagens geradas por IA e editadas no [Photopea](https://www.photopea.com/)  
 
-⚠️ Aviso Legal
-Este jogo, WHAY-HE, é uma obra original criada por Ernesto Rampanelli Neto. Todos os elementos — incluindo código, design, imagens, sons e narrativa — são protegidos por direitos autorais.
+---
 
-É expressamente proibido copiar, modificar, distribuir, vender, sublicenciar ou publicar este jogo, total ou parcialmente, sem autorização prévia e por escrito do autor.
+⚠️ **Aviso Legal**  
+Este projeto, CorpoRuptura, é uma obra original criada por Ernesto Rampanelli Neto. Todos os elementos — incluindo código, design, imagens, sons e lógica de funcionamento — são protegidos por direitos autorais.
+
+É expressamente proibido copiar, modificar, distribuir, vender, sublicenciar ou publicar este projeto, total ou parcialmente, sem autorização prévia e por escrito do autor.
 
 Qualquer uso indevido, tentativa de plágio ou exploração comercial não autorizada poderá resultar em medidas legais conforme as leis de propriedade intelectual vigentes.
 
-©Ernesto Rampanelli Neto- Todos os direitos reservados.
+© Ernesto Rampanelli Neto — Todos os direitos reservados.
