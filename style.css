@@ -26,14 +26,14 @@ main {
 }
 
 h1 {
-  font-family: 'Bebas Neue', Arial, Helvetica, sans-serif;
-  font-style: italic;
-  font-size: 70px;
-  color: #ffd700;
-  text-shadow: 2px 2px 6px #00000080;
-  margin: 20px 0;
-  text-transform: uppercase;
-  border-bottom: 3px solid #ffd700;
+    font-family: 'Bebas Neue', Arial, Helvetica, sans-serif;
+    font-style: italic;
+    font-size: 70px;
+    color: #ffd700;
+    text-shadow: 2px 2px 6px #00000080;
+    margin: 20px 0;
+    text-transform: uppercase;
+    border-bottom: 3px solid #ffd700;
 }
 
 
@@ -198,7 +198,7 @@ footer {
 #container_historico {
     display: flex;
     align-items: center;
-    width: 470px;
+    min-width: 470px;
     height: 166px;
 }
 
@@ -217,6 +217,7 @@ footer {
     margin: 10px;
     box-shadow: 3px 4px 7px 2px #00000096;
 }
+
 #limpar_dados_btn,
 #trocar_pontos {
     color: #00ffcc;
@@ -239,4 +240,18 @@ footer {
 
 .piscar {
     box-shadow: 0px 0px 5px 8px #ff3333;
+}
+
+::-webkit-scrollbar {
+    width: 1vw;
+}
+
+::-webkit-scrollbar-track {
+    background: #222;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #f3e400;
+    border-radius: 10px;
+    border: 2px solid #222;
 }
