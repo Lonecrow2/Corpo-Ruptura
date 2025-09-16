@@ -72,9 +72,9 @@ let soma_progresso = 0;
 let nivel = 1;
 function colocar_personagem() {
     if (soma_progresso_intense > 25) { nivel = 2; }
-    if (soma_progresso_intense > 40) { nivel = 3; }
-    if (soma_progresso_intense > 75) { nivel = 4; }
-    if (soma_progresso_intense > 99) { nivel = 5; }
+    if (soma_progresso_intense > 45) { nivel = 3; }
+    if (soma_progresso_intense > 60) { nivel = 4; }
+    if (soma_progresso_intense > 75) { nivel = 5; }
     perso.src = `imagens/P${nivel}.png`;
 }
 
